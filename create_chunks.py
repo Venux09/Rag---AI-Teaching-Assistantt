@@ -32,5 +32,5 @@ for audio in audios:
         chunks_with_metadata = {"chunks":chunks,"text":result["text"]}
 
 
-        with open (f"jsons/{audio}","w") as f : #loading the chunks into the json file - jsons/files 
-            json.dumps(chunks,f)     
+        with open(f"jsons/{audio}.json","w") as f : #loading the chunks into the json file - jsons/files 
+            json.dump(chunks_with_metadata,f)     
