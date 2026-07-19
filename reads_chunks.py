@@ -2,6 +2,7 @@ import requests #importing request module
 import os
 import json
 import pandas as pd   
+import numpy as np 
 from sklearn.metrics.pairwise import cosine_similarity #scikit learn library for creating the cosine similarity of the  the arrays 
 
 
@@ -49,3 +50,10 @@ print(df)
 incoming_query = input('Ask a Question:')
 Question_embedding = create_embedding([incoming_query])[0]
 print(Question_embedding)
+
+
+#finding the consine similarity of the question_embedding  with other embeddings 
+ 
+similiarities = cosine_similarity(np.vstack(df['embedding'].values),[Question_embedding])#using vstact of numpy for changing the data to 2 dimensional array for making the similarities
+
+
