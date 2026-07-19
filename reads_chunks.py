@@ -1,40 +1,51 @@
 import requests #importing request module 
 import os
 import json
+import pandas as pd   
+from sklearn.metrics.pairwise import cosine_similarity #scikit learn library for creating the cosine similarity of the  the arrays 
+
 
 def create_embedding(text_list):
 
 #requesting bge-m3 to create embedding from the prompt we have given 
     r = requests.post('http://localhost:11434/api/embed' ,
                     json={"model" : "bge-m3",
-                    "input":text_list})
+                          "input":text_list})
 
 
-    #creating the json of the embedding produced from the requested embedding 
-    embedding = r.json()['embedding']
+    #creating the json of the embedding produced from the requested embedding
+    embedding = r.json()["embeddings"]
     
     #returning embedding from the text 
     return embedding
 
 
-
 #listing the json files 
 jsons = os.listdir('jsons')
-my_dict = []
+my_dicts = []
 chunk_id = 0
+
 for json_file in jsons : #json files in jsons
     with open(f"jsons/{json_file}") as f :
-        content = json.load(f)#loaing the content of the json file 
-    embeddings = create_embedding[{c["text"] for c in content['chunks']}] #create the embedding of the Text block of the json files 
+        content = json.load(f)#loaing the content of the json file which is as f 
 
-    for chunk in content['chunks']: # json content chunks as chunk
-        print(chunk)
+    print(f"Creating embeddings for the {json_file}")
+    embeddings = create_embedding([c['text'] for c in content['chunks']])
+
+
+    #create the embedding of the Text block of the json files 
+    for i , chunk in enumerate(content['chunks']): # json content chunks as chunk
         chunk['chunk_id'] = chunk_id #id of the chunk of the json
-        chunk['embedding'] = create_embedding(chunk['text']) #settng chunk embedding as the embedding of the text in the chunk blocks
+        chunk['embedding'] = embeddings[i] #settng chunk embedding as the embedding of the text in the chunk blocks
         chunk_id += 1
-        my_dict.append('chunk')
-
+        my_dicts.append(chunk) 
+        if i == 5:
+            break
     break
-    
 
 
+df = pd.DataFrame.from_records(my_dicts)#data frame of the dictionary of the chunks 
+print(df)
+incoming_query = input('Ask a Question:')
+Question_embedding = create_embedding([incoming_query])[0]
+print(Question_embedding)
