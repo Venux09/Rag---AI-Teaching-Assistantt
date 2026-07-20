@@ -1,0 +1,36 @@
+===== CHANGES MADE TO reads_chunks.py =====
+
+PROBLEM: Script was crashing because Ollama API was disconnecting randomly.
+
+SOLUTION: Added error handling and retry logic.
+
+===== DETAILED CHANGES =====
+
+1. LINE 3 - Added new import
+   - Added: import time
+   - Why: Needed to add delays between retry attempts
+
+2. LINE 10-31 - Modified create_embedding() function
+   - OLD: Direct API call without retries
+   - NEW: Automatic retry logic (tries 3 times)
+   - How it works:
+     * Try to get embeddings from Ollama
+     * If it fails, wait 5 seconds and retry
+     * Do this 3 times before giving up
+   - Also changed model from "bge-m3" to "nomic-embed-text" (more stable)
+
+3. LINE 37-56 - Added error handling in main loop
+   - Wrapped json file processing in try-except block
+   - If one file fails, it skips it and moves to next file
+   - Instead of crashing entire script
+
+===== RESULT =====
+
+✓ Script no longer crashes on connection errors
+✓ Automatically retries if Ollama disconnects
+✓ Continues processing other files if one fails
+✓ Successfully creates embeddings and processes queries
+
+===== TO RUN =====
+
+.venv\Scripts\python.exe reads_chunks.py
