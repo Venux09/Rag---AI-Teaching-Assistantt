@@ -5,17 +5,19 @@ import time
 import pandas as pd   
 import numpy as np 
 from sklearn.metrics.pairwise import cosine_similarity #scikit learn library for creating the cosine similarity of the  the arrays 
+import joblib #for saving the data frames 
 
+def create_embedding(text_list, retries=3):#function for creating the embedings 
 
-def create_embedding(text_list, retries=3):
-
-    for attempt in range(retries):
+    for attempt in range(retries):#retries to create embeddings when model fails to create one ]
+        
+        #creating the embedding using the nomic-emebed for creating the embeddings 
         try:
             r = requests.post('http://localhost:11434/api/embed' ,
                             json={"model" : "nomic-embed-text",
                                   "input":text_list}, timeout=30)
 
-            if r.status_code != 200:
+            if r.status_code != 200:#error handling 
                 print(f"Attempt {attempt+1}: ERROR - {r.json()}")
                 time.sleep(5)
                 continue
@@ -23,6 +25,7 @@ def create_embedding(text_list, retries=3):
             #creating the json of the embedding produced from the requested embedding
             embedding = r.json()["embeddings"]
             return embedding
+        
         except Exception as e:
             print(f"Attempt {attempt+1}: Connection failed - {e}")
             if attempt < retries - 1:
@@ -33,7 +36,10 @@ def create_embedding(text_list, retries=3):
 
 #listing the json files 
 jsons = os.listdir('jsons')
+jsons.sort(key=lambda x: int(x.split('_')[0]))  # Sort by number at start (1, 2, 3... 10, 11)
+
 my_dicts = []
+
 chunk_id = 0
 
 for json_file in jsons : #json files in jsons
@@ -50,8 +56,7 @@ for json_file in jsons : #json files in jsons
             chunk['embedding'] = embeddings[i] #settng chunk embedding as the embedding of the text in the chunk blocks
             chunk_id += 1
             my_dicts.append(chunk) 
-            if i == 5:
-                break
+
     except Exception as e:
         print(f"SKIPPED {json_file}: {e}")
         continue
@@ -59,16 +64,10 @@ for json_file in jsons : #json files in jsons
 
 
 df = pd.DataFrame.from_records(my_dicts)#data frame of the dictionary of the chunks 
-print(df)
-incoming_query = input('Ask a Question:')
-Question_embedding = create_embedding([incoming_query])[0]
 
 
+#saving the dataframe using joblib
+joblib.dump(df,"embeddings.joblib")
 
-#finding the consine similarity of the question_embedding  with other embeddings 
- 
-similiarities = cosine_similarity(np.vstack(df['embedding'].values),[Question_embedding]).flatten()#using vstact of numpy for changing the data to 2 dimensional array for making the similarities , flattening for getting in in one column for readability 
-print(similiarities.argsort())
-print(similiarities)
 
 
