@@ -3,49 +3,25 @@ import pandas as pd
 from sklearn.metrics.pairwise import cosine_similarity
 from reads_chunks import create_embedding
 import joblib
-import time 
 import requests
 
 
 
 
-def create_embedding(text_list, retries=3):#function for creating the embedings 
-
-    for attempt in range(retries):#retries to create embeddings when model fails to create one ]
+def create_embedding(text_list, ):#function for creating the embedings 
         
         #creating the embedding using the nomic-emebed for creating the embeddings 
-        try:
+    
             r = requests.post('http://localhost:11434/api/embed' ,
-                            json={"model" : "nomic-embed-text",
-                                  "input":text_list}, timeout=30)
-
-            if r.status_code != 200:#error handling 
-                print(f"Attempt {attempt+1}: ERROR - {r.json()}")
-                time.sleep(5)
-                continue
-            
+                            json={"model" : "bge-m3",
+                                  "input":text_list})
             #creating the json of the embedding produced from the requested embedding
             embedding = r.json()["embeddings"]
             return embedding
         
-        except Exception as e:
-            print(f"Attempt {attempt+1}: Connection failed - {e}")
-            if attempt < retries - 1:
-                time.sleep(5)
-            else:
-                raise Exception(f"Ollama API failed after {retries} attempts: {e}")
-            
 
-
+#saving the data frames in the joblib 
 df  =  joblib.load('embeddings.joblib')
-
-
-
-
-
-
-
-
 
 incoming_query = input('Ask a Question:')
 
