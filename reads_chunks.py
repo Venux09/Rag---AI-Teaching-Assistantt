@@ -10,10 +10,12 @@ def create_embedding(text_list):#function for creating the embedings
         #creating the embedding using the nomic-emebed for creating the embeddings 
         
             r = requests.post('http://localhost:11434/api/embed' ,
-                            json={"model" : "bge-3m",
+                            json={"model" : "bge-m3",
                                   "input":text_list})
 
             #creating the json of the embedding produced from the requested embedding
+            print(r.status_code)
+            print(r.text)
             embedding = r.json()["embeddings"]
             return embedding
 
