@@ -1,2 +1,5 @@
-__pycache__/
+__pycache__/reads_chunks.cpython-314.pyc
+*.py[cod]
+
 .vscode
+__pycache__/reads_chunks.cpython-314.pyc
