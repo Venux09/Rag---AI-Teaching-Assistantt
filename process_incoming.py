@@ -3,25 +3,26 @@ from sklearn.metrics.pairwise import cosine_similarity
 from reads_chunks import create_embedding
 import joblib
 import requests
+from reads_chunks import create_embedding
 
 
 
 
-def create_embedding(text_list, ):#function for creating the embedings 
+# def create_embedding(text_list):#function for creating the embedings 
         
-        #creating the embedding using the nomic-emebed for creating the embeddings 
+#         #creating the embedding using the nomic-emebed for creating the embeddings 
     
-            r = requests.post('http://localhost:1234/v1/embeddings' ,
-                            json={"model" : "lm-kit/bge-m3-gguf",
-                                  "input":text_list})
-            #creating the json of the embedding produced from the requested embedding
-            print(r.status_code)
+#             r = requests.post('http://localhost:1234/v1/embeddings' ,
+#                             json={"model" : "lm-kit/bge-m3-gguf",
+#                                   "input":text_list})
+#             #creating the json of the embedding produced from the requested embedding
+#             print(r.status_code)
             
-            response = r.json()
-            if "error" in response:
-                   print(response["error"])
-                   return None
-            return [data['embedding']for data in response["data"] ]
+#             response = r.json()
+#             if "error" in response:
+#                    print(response["error"])
+#                    return None
+#             return [data['embedding']for data in response["data"] ]
 
 #saving the data frames in the joblib 
 df  =  joblib.load('embeddings.joblib')

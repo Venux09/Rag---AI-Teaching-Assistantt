@@ -21,7 +21,9 @@ def create_embedding(text_list):#function for creating the embedings
                    return None
             return [data['embedding']for data in response["data"] ]
 
-if __name__ == "__main__":
+
+
+if __name__ == "__main__":#for work this function in this file only 
     #listing the json files 
     jsons = os.listdir('jsons')
     jsons.sort(key=lambda x: int(x.split('_')[0]))  # Sort by number at start (1, 2, 3... 10, 11)
