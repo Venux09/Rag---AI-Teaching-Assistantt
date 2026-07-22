@@ -21,37 +21,37 @@ def create_embedding(text_list):#function for creating the embedings
                    return None
             return [data['embedding']for data in response["data"] ]
 
+if __name__ == "__main__":
+    #listing the json files 
+    jsons = os.listdir('jsons')
+    jsons.sort(key=lambda x: int(x.split('_')[0]))  # Sort by number at start (1, 2, 3... 10, 11)
 
-#listing the json files 
-jsons = os.listdir('jsons')
-jsons.sort(key=lambda x: int(x.split('_')[0]))  # Sort by number at start (1, 2, 3... 10, 11)
+    my_dicts = []
 
-my_dicts = []
+    chunk_id = 0
 
-chunk_id = 0
+    for json_file in jsons : #json files in jsons
+            with open(f"jsons/{json_file}") as f :
+                content = json.load(f)#loaing the content of the json file which is as f 
 
-for json_file in jsons : #json files in jsons
-        with open(f"jsons/{json_file}") as f :
-            content = json.load(f)#loaing the content of the json file which is as f 
-
-        print(f"Creating embeddings for the {json_file}")
-        embeddingss = create_embedding([c['text'] for c in content['chunks'] if c.get('text', '').strip()])
-
-
-        #create the embedding of the Text block of the json files 
-        for i , chunk in enumerate(content['chunks']): # json content chunks as chunk
-            chunk['chunk_id'] = chunk_id #id of the chunk of the json
-            chunk['embedding'] = embeddingss[i] #settng chunk embedding as the embedding of the text in the chunk blocks
-            chunk_id += 1
-            my_dicts.append(chunk) 
+            print(f"Creating embeddings for the {json_file}")
+            embeddingss = create_embedding([c['text'] for c in content['chunks'] if c.get('text', '').strip()])
 
 
-df = pd.DataFrame.from_records(my_dicts)#data frame of the dictionary of the chunks 
+            #create the embedding of the Text block of the json files 
+            for i , chunk in enumerate(content['chunks']): # json content chunks as chunk
+                chunk['chunk_id'] = chunk_id #id of the chunk of the json
+                chunk['embedding'] = embeddingss[i] #settng chunk embedding as the embedding of the text in the chunk blocks
+                chunk_id += 1
+                my_dicts.append(chunk) 
 
 
-#saving the dataframe using joblib
-joblib.dump(df,"embeddings.joblib")
-print('succesfully saved the embeddings.joblib in the directories')
+    df = pd.DataFrame.from_records(my_dicts)#data frame of the dictionary of the chunks 
+
+
+    #saving the dataframe using joblib
+    joblib.dump(df,"embeddings.joblib")
+    print('succesfully saved the embeddings.joblib in the directories')
 
 
 
