@@ -13,7 +13,7 @@ def create_embedding(text_list):#function for creating the embedings
                                   "input":text_list})
 
             #creating the json of the embedding produced from the requested embedding
-            print(r.status_code)
+            print(f"Code Status-{r.status_code}")
             
             response = r.json()
             if "error" in response:
