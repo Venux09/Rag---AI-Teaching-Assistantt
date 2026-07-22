@@ -11,13 +11,17 @@ def create_embedding(text_list, ):#function for creating the embedings
         
         #creating the embedding using the nomic-emebed for creating the embeddings 
     
-            r = requests.post('http://localhost:11434/api/embed' ,
-                            json={"model" : "bge-m3",
+            r = requests.post('http://localhost:1234/v1/embeddings' ,
+                            json={"model" : "lm-kit/bge-m3-gguf",
                                   "input":text_list})
             #creating the json of the embedding produced from the requested embedding
-            embedding = r.json()["embeddings"]
-            return embedding
-        
+            print(r.status_code)
+            
+            response = r.json()
+            if "error" in response:
+                   print(response["error"])
+                   return None
+            return [data['embedding']for data in response["data"] ]
 
 #saving the data frames in the joblib 
 df  =  joblib.load('embeddings.joblib')
@@ -37,3 +41,5 @@ print(max_idx) #index of the top 3 results of the consine similarity of the ques
 
 new_df = df.loc[max_idx]
 print(new_df[["Title","number","text"]])
+
+
