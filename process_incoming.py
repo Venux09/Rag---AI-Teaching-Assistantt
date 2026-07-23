@@ -1,13 +1,13 @@
 import numpy as np 
 from sklearn.metrics.pairwise import cosine_similarity
-from reads_chunks import create_embedding
+from pre_processed import create_embedding
 import joblib
-from reads_chunks import create_embedding
+from pre_processed import create_embedding
 import pandas as pd 
 import requests
 
 #inference 
-def inference(prompt):#loading the model for the generation 
+def inference(prompt):#function for the getting output using the api and providing promt for the model and the getting the response 
 
        r = requests.post('http://localhost:11434/api/generate',
        json={"model" : "llama3.2:1b",
@@ -31,16 +31,14 @@ Question_embedding = create_embedding([incoming_query])[0]
 
 #finding the consine similarity of the question_embedding  with other embeddings 
  
-similiarities = cosine_similarity(np.vstack(df['embedding'].values),[Question_embedding]).flatten()#using vstact of numpy for changing the data to 2 dimensional array for making the similarities , flattening for getting in in one column for readability 
-# print(similiarities)
+similiarities = cosine_similarity(np.vstack(df['embedding'].values),[Question_embedding]).flatten()#usingvstact of numpy for changing the data to 2 dimensional array for making the similarities , flattening for getting in in one column for readability 
 
 
 #top results 
 top_result = 5 
 max_idx = similiarities.argsort()[::-1][0:top_result]
-# print(max_idx) #index of the top 3 results of the consine similarity of the quesiton 
 new_df = df.loc[max_idx]
-# print(new_df[["Title","number","text"]])
+
 
 
 
@@ -77,14 +75,9 @@ Instructions:
 response = inference(prompt)['response']
 print(response)
 
-with open ('response.txt',"w") as f :
+with open ('response.txt',"w") as f :#saving the response in the response.text 
     f.write(response)
 
-
-
-#output of the rag system 
-# for index , item in new_df.iterrows():
-#     print(index,item["Title"],item["number"],item["text"],item["start"],item["end"])
 
 
 
