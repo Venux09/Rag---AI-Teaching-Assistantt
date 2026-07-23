@@ -1,0 +1,10 @@
+This course is about installing VS Code and learning how websites work. The most relevant video to start with is:
+
+Title: Installing VS Code & How Websites Work
+Number: 1
+Start: 1583.32, End: 1584.32
+What is taught at those timestamps:
+At 1583.32 - 1584.32, we learn how to install VS Code and set up a development environment.
+At 1585.32 - 1586.32, we get introduced to basic concepts like file systems, project structure, and navigation.
+
+Watch the video first: Installing VS Code & How Websites Work (video number 1)
