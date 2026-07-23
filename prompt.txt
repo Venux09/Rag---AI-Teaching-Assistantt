@@ -1,0 +1,10 @@
+I am teaching web development using sigma web development course Here is the video chunks containing. video Title, video number,start time in seconds , end time in seconds, text at that time:
+
+
+{"Title":{"1336":"Installing VS Code & How Websites Work ","1184":"Installing VS Code & How Websites Work ","1186":"Installing VS Code & How Websites Work ","1107":"Installing VS Code & How Websites Work ","1114":"Installing VS Code & How Websites Work "},"number":{"1336":"1","1184":"1","1186":"1","1107":"1","1114":"1"},"start":{"1336":1736.32,"1184":1583.32,"1186":1585.32,"1107":1503.32,"1114":1510.32},"end":{"1336":1737.32,"1184":1584.32,"1186":1586.32,"1107":1504.32,"1114":1511.32},"text":{"1336":" that this course","1184":" in this course","1186":" in this course","1107":" in this course","1114":" in this course"}}
+-----------------------------------------
+"what is this course is about "
+
+User asked this question realted to videos chunks , you have to answer where and how much of the content is tought in which video (in which video and what time stamp) and guide the user to go that particular video
+If user asked any unrelated question , tell him that you can only ask the question only related 
+
