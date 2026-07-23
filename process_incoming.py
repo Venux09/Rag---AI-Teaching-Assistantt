@@ -4,10 +4,27 @@ from reads_chunks import create_embedding
 import joblib
 from reads_chunks import create_embedding
 import pandas as pd 
+import requests
+
+#inference 
+def inference(prompt):#loading the model for the generation 
+
+       r = requests.post('http://localhost:11434/api/generate',
+       json={"model" : "llama3.2:1b",
+       "prompt":prompt,
+       "stream":False})
+
+
+       response = r.json()
+       print(response)
+       return response
+
+
+
 
 
 #saving the data frames in the joblib 
-df  =  joblib.load('embeddings.joblib')
+df =  joblib.load('embeddings.joblib')
 
 incoming_query = input('Ask a Question:')
 Question_embedding = create_embedding([incoming_query])[0]
@@ -28,24 +45,48 @@ new_df = df.loc[max_idx]
 
 
 #prompt 
-prompt = f'''I am teaching web development using sigma web development course Here is the video chunks containing. video Title, video number,start time in seconds , end time in seconds, text at that time:
+prompt = f"""
+You are an AI Teaching Assistant for the Sigma Web Development Course.
+
+Course Context:
+{new_df[['Title','number','start','end','text']].to_json(orient='records')}
+
+User Question:
+{incoming_query}
+
+Instructions:
+- Answer ONLY using the provided course context.
+- If the answer exists, respond naturally as a teacher.
+- Mention:
+  • Video number
+  • Video title
+  • Relevant timestamp(s)
+  • What is taught at those timestamps.
+- If the topic appears in multiple timestamps or videos, combine them into one concise answer.
+- Guide the user to watch the most relevant video and timestamp first.
+- Do NOT mention "chunks", "context", "retrieved data", "JSON", or any internal processing.
+- Do NOT explain how you found the answer.
+- Do NOT add unnecessary headings or extra text.
+- If the question is unrelated to the Sigma Web Development Course, reply exactly:
+  "I can only answer questions related to the Sigma Web Development Course."
+- If the provided course content does not contain the answer, reply:
+  "I couldn't find this topic in the available course videos."
+- Keep the response concise, helpful, and human-like.
+"""
+
+response = inference(prompt)['response']
+print(response)
+
+with open ('response.txt',"w") as f :
+    f.write(response)
 
 
-{new_df[['Title','number','start','end','text']].to_json()}
------------------------------------------
-"{incoming_query}"
 
-User asked this question realted to videos chunks , you have to answer where and how much of the content is tought in which video (in which video and what time stamp) and guide the user to go that particular video
-If user asked any unrelated question , tell him that you can only ask the question only related 
-
-'''
-
-
-with open ('prompt.txt',"w") as f :
-    f.write(prompt)
 #output of the rag system 
 # for index , item in new_df.iterrows():
 #     print(index,item["Title"],item["number"],item["text"],item["start"],item["end"])
+
+
 
 
 
