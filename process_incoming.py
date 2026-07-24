@@ -1,4 +1,4 @@
-from groq import Groq
+# from groq import Groq
 import numpy as np 
 from sklearn.metrics.pairwise import cosine_similarity
 from pre_processed import create_embedding
@@ -23,22 +23,22 @@ def inference(prompt):#function for the getting output using the api and providi
        return response
 
 
-load_dotenv()
-api_key = os.getenv('GROQ_API_KEY')
-client = Groq(api_key=api_key)
+# load_dotenv()
+# api_key = os.getenv('GROQ_API_KEY')
+# client = Groq(api_key=api_key)
 
 
-def inference_groq(prompt):
-    response = client.chat.completions.create(
-        model="llama-3.3-70b-versatile",
-        messages=[
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ]
-    )
-    return response.choices[0].message.content
+# def inference_groq(prompt):
+#     response = client.chat.completions.create(
+#         model="llama-3.3-70b-versatile",
+#         messages=[
+#             {
+#                 "role": "user",
+#                 "content": prompt
+#             }
+#         ]
+#     )
+#     return response.choices[0].message.content
 
 
 #saving the data frames in the joblib 
@@ -90,7 +90,7 @@ Instructions:
 - Keep the response concise, helpful, and human-like.
 """
 
-response = inference_groq(prompt)
+response = inference(prompt)
 print(response)
 
 with open ('response.txt',"w",encoding='utf-8') as f :#saving the response in the response.text 
