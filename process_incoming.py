@@ -8,7 +8,7 @@ import pandas as pd
 import requests
 from dotenv import load_dotenv
 import os 
-
+import json
 #inference 
 def inference(prompt):#function for the getting output using the api and providing promt for the model and the getting the response 
 
@@ -90,7 +90,7 @@ Instructions:
 - Keep the response concise, helpful, and human-like.
 """
 
-response = inference(prompt)
+response = inference(prompt)['response']
 print(response)
 
 with open ('response.txt',"w",encoding='utf-8') as f :#saving the response in the response.text 
