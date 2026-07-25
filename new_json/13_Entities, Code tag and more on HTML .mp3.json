@@ -1,0 +1,376 @@
+{
+    "chunks": [
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 0.0,
+            "end": 14.76,
+            "text": " Guys, we have seen almost everything in HTML. In today's video, we will talk about some miscellaneous things that we have concluded. Which will help you a lot in your web development journey. After that, we will start CSS with the upcoming videos. I am concluding HTML. I am very excited."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 14.76,
+            "end": 36.12,
+            "text": " Do like this video and write a sigma patch in the comment section below. Let's go in the computer screen. Let's roll the intro. As you can see, I have entered my computer screen. I will make a new folder without wasting time."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 36.12,
+            "end": 49.0,
+            "text": " The name of which I will name it Video 13. I will come in and click on Shift and open VS Code. And I will make a file. Index.html. Now I have given the file to index.html."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 49.0,
+            "end": 69.04,
+            "text": " Now I want to tell you something. There are many things in HTML that you have to explore. I will tell you some things and then I will conclude the HTML. If you want to download the screencast mode by opening the word wrap. If you want to write in HTML, this is 3 is greater than 4."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 69.04,
+            "end": 85.72,
+            "text": " If you want to write in HTML, I will show you the preview. So this is 3 is greater than 4. Now I will write this is the code for paragraph. And I will write something like this. I have written this."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 85.72,
+            "end": 97.76,
+            "text": " I want it to appear. But here you see that it will not appear. Why not? Because how will it know that I want to write the code for paragraph. Or I want to use the syntax of PTAG."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 97.76,
+            "end": 110.24000000000001,
+            "text": " So this is what HTML entities are for. Now I will tell you what HTML entities are. If you write here ampersandltsemi column. LT for less than. So you can write this as LTsemi column."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 110.24000000000001,
+            "end": 122.52,
+            "text": " Now if you write here ampersandltsemi column. And you will replace it with ampersandltsemi column. And the greater than is simple. You replace it with ampersandltsemi column. I will show you by doing this."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 122.52,
+            "end": 133.8,
+            "text": " If you replace it with ampersandltsemi column. So what will happen? As it is written here, it will appear here. As you can see here. I will zoom it here."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 133.8,
+            "end": 146.32000000000002,
+            "text": " So what happens that HTML entities are used. To write those things. Which is collided with the syntax of HTML. What will be collided? If we write paragraph tag here."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 146.32000000000002,
+            "end": 156.12,
+            "text": " How will we know HTML is the code of paragraph tag. Or you actually want to write this as it is. There is a pre tag for this. If you put anything in pre tag. And you write here."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 156.12,
+            "end": 163.4,
+            "text": " Then P. This is a paragraph. If you write it like this. Then here it will appear as it is. As you can see."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 163.4,
+            "end": 174.6,
+            "text": " It will appear as it is. And along with that. If you write new lines here. This is after few new lines. And some more."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 174.6,
+            "end": 182.76,
+            "text": " If you write like this. As it is. It will keep all the spaces intact. It keeps all the new lines intact. But here it will not show up as tag."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 182.76,
+            "end": 191.07999999999998,
+            "text": " We will have to use the entities for tags. This happens in pre tag HTML. So we have seen the entities. We have seen pre tag. If you want to put the symbol of copyright."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 191.07999999999998,
+            "end": 203.16000000000003,
+            "text": " Then you can write ampersandltsemi column. And as you write ampersandltsemi column. Then you will get to see the symbol of copyright. As you can see. You can do this with the help of HTML entities."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 203.16000000000003,
+            "end": 213.48000000000002,
+            "text": " So try out all these examples. Along with non-breaking spaces. You will see special symbols. Like we saw the copyright. Ampersandltnbsp is used for space."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 213.48000000000002,
+            "end": 225.52,
+            "text": " And it is very important. So if I write copyright. I write copyright. I want to see many spaces here. And I write code with her."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 225.52,
+            "end": 234.04,
+            "text": " If I write code with her. Then this space will be considered as fake space. Because the extra spaces in HTML are ignored. So you will see here. After the copyright."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 234.04,
+            "end": 243.04,
+            "text": " Later the code was added. But ideally we don't want this. What we want? We want these spaces that I have put. So you don't put spaces."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 243.04,
+            "end": 252.04,
+            "text": " You put ampersandltnbsp. You will put ampersandltnbsp as many times as you want. You will see here. These spaces are coming. So you have to put literally space in your HTML code."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 252.04,
+            "end": 265.04,
+            "text": " Ampersandltnbsp is something you should go after. So here you have to put these breaking spaces. And the reserved characters in HTML. Like less than greater than. You can do all this with HTML entities."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 265.04,
+            "end": 275.04,
+            "text": " After this. What is quotation tag? Quotation tag helps you to write quotation. I will also tell you the example of quotation tag. So quotation tag works like this."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 275.04,
+            "end": 287.04,
+            "text": " And as soon as you write quotation text here. So what will happen? Search engines will know that you are actually writing quotation. And you can style it with CSS. If you want to site anything here."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 287.04,
+            "end": 296.04,
+            "text": " You can put its URL. Similarly you can use Q tag. Site is equal to URL. So you can site it. You can use it for some research article."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 296.04,
+            "end": 305.04,
+            "text": " Or there are other reasons. If you want to site wikipedia. So this is used for tags. And you can style it with CSS. So these are our quotation tags."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 305.04,
+            "end": 315.04,
+            "text": " And HTML entities. Then there are some tags of HTML that have been obsolete. Like font tag has been obsolete. Because we handle the font with CSS. We don't use font tag."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 315.04,
+            "end": 325.04,
+            "text": " There were many attributes in font. Like color, size. And you can use font tag like this. But it is not recommended to use font tag. Then center tag."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 325.04,
+            "end": 335.04,
+            "text": " It might help to center things. But I will recommend you that we will center with CSS. Flexbox grade. Which is modern CSS. So these are all tags."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 335.04,
+            "end": 344.04,
+            "text": " You should know about them. But you should also know that you don't have to use them. I hope that helps. Then code tag. The most important tag for coders."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 344.04,
+            "end": 356.04,
+            "text": " Like you are watching this website. Codewithherry.com. You are watching the code tag I have used here. And if you are very interested in this. I will tell you that I am using a library called prismcss."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 356.04,
+            "end": 363.04,
+            "text": " Many people ask me. And how to do all this. I will tell you this. Prism.js. Prism.js."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 363.04,
+            "end": 371.04,
+            "text": " Prism.js. What happens is that your code is highlighting. You can put your code in your blog. So I am using this library. I will tell you how to do all this."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 371.04,
+            "end": 379.04,
+            "text": " I am using React too. So everything is coming forward. Don't worry. But if you want to write code like this. You have to use code tag."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 379.04,
+            "end": 387.04,
+            "text": " If you write it in the source code. You will see that any code is written in the pre tag. In the code tag. I have put pre tag. Then I have put code tag."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 387.04,
+            "end": 393.04,
+            "text": " You can see below. So any kind of code. If you find it on my site. It will be in the code tag. So you can copy it."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 393.04,
+            "end": 401.04,
+            "text": " You can paste it. You can write the multi line code. You can write it in pre tag. Why do you put pre tag? So that the new lines are intact."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 401.04,
+            "end": 409.04,
+            "text": " For example. I want to write a code here. And here I want to write a Python code. Okay. Here I want to write HTML code."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 409.04,
+            "end": 418.04,
+            "text": " I will do control n. And here I will do HTML. And I will enter the exclamation mark. And here I will copy and paste. And I will write in h1."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 418.04,
+            "end": 428.04,
+            "text": " That this is. I will write in h1. This is HTML boilerplate code. Okay. So if I preview this."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 428.04,
+            "end": 438.04,
+            "text": " So here this is HTML boilerplate code. Actually it was rendered. If I want to write code as it is. So what I will have to do is. I will have to replace this less than sign."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 438.04,
+            "end": 447.04,
+            "text": " I will do right click change all occurrences. And what I will do here. m%lt semicolon. I had told you that lt semicolon. And along with that the greater than symbol."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 447.04,
+            "end": 458.04,
+            "text": " Right click change all occurrences. m% m% gt semicolon. Now I will paste this code there. I can't do as it is paste. This is also very important."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 458.04,
+            "end": 466.04,
+            "text": " Now you will see here. So here see code as it is. So if you want to copy anything. Note one thing. Because of pre-tact."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 466.04,
+            "end": 473.04,
+            "text": " These spaces are also coming. If you want to remove these spaces. Then you select them. Press shift or tap. So shift tap means that the indent is reduced."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 473.04,
+            "end": 479.04,
+            "text": " Okay. So you can do this. And after that. Press backspace here. And here too I will press extra space."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 479.04,
+            "end": 488.04,
+            "text": " And you see your code as you want. It is here. And you can do it with CSS style. We will use prism CSS. I will tell you how to use such libraries."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 488.04,
+            "end": 498.04,
+            "text": " There will be a lot of things in the coming videos. I wanted to tell you about some HTML tags. About which you should know. Then after this character sets. Character sets."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 498.04,
+            "end": 508.04,
+            "text": " Means which characters are you using in your page. Then canvas. What is canvas? Basically the use of canvas is mainly done through JavaScript. But you can understand canvas."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 508.04,
+            "end": 517.04,
+            "text": " That there is an element in HTML. That is how we make graphical shapes. Okay. I hope you have understood the whole content of HTML. You must have understood it."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 517.04,
+            "end": 525.04,
+            "text": " In the coming videos. We will do CSS. HTML is completed. I hope you are enjoying it. The source code is being uploaded here."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 525.04,
+            "end": 533.04,
+            "text": " So do access it. Along with that. This playlist is not being accessed. So click here and bookmark. Or click and save."
+        },
+        {
+            "number": "13",
+            "Title": "Entities, Code tag and more on HTML ",
+            "start": 533.04,
+            "end": 541.04,
+            "text": " That's all for now. Thank you so much for watching this video. And I will see you next time. Bye."
+        }
+    ],
+    "text": " Guys, we have seen almost everything in HTML. In today's video, we will talk about some miscellaneous things that we have concluded. Which will help you a lot in your web development journey. After that, we will start CSS with the upcoming videos. I am concluding HTML. I am very excited. Do like this video and write a sigma patch in the comment section below. Let's go in the computer screen. Let's roll the intro. As you can see, I have entered my computer screen. I will make a new folder without wasting time. The name of which I will name it Video 13. I will come in and click on Shift and open VS Code. And I will make a file. Index.html. Now I have given the file to index.html. Now I want to tell you something. There are many things in HTML that you have to explore. I will tell you some things and then I will conclude the HTML. If you want to download the screencast mode by opening the word wrap. If you want to write in HTML, this is 3 is greater than 4. If you want to write in HTML, I will show you the preview. So this is 3 is greater than 4. Now I will write this is the code for paragraph. And I will write something like this. I have written this. I want it to appear. But here you see that it will not appear. Why not? Because how will it know that I want to write the code for paragraph. Or I want to use the syntax of PTAG. So this is what HTML entities are for. Now I will tell you what HTML entities are. If you write here ampersandltsemi column. LT for less than. So you can write this as LTsemi column. Now if you write here ampersandltsemi column. And you will replace it with ampersandltsemi column. And the greater than is simple. You replace it with ampersandltsemi column. I will show you by doing this. If you replace it with ampersandltsemi column. So what will happen? As it is written here, it will appear here. As you can see here. I will zoom it here. So what happens that HTML entities are used. To write those things. Which is collided with the syntax of HTML. What will be collided? If we write paragraph tag here. How will we know HTML is the code of paragraph tag. Or you actually want to write this as it is. There is a pre tag for this. If you put anything in pre tag. And you write here. Then P. This is a paragraph. If you write it like this. Then here it will appear as it is. As you can see. It will appear as it is. And along with that. If you write new lines here. This is after few new lines. And some more. If you write like this. As it is. It will keep all the spaces intact. It keeps all the new lines intact. But here it will not show up as tag. We will have to use the entities for tags. This happens in pre tag HTML. So we have seen the entities. We have seen pre tag. If you want to put the symbol of copyright. Then you can write ampersandltsemi column. And as you write ampersandltsemi column. Then you will get to see the symbol of copyright. As you can see. You can do this with the help of HTML entities. So try out all these examples. Along with non-breaking spaces. You will see special symbols. Like we saw the copyright. Ampersandltnbsp is used for space. And it is very important. So if I write copyright. I write copyright. I want to see many spaces here. And I write code with her. If I write code with her. Then this space will be considered as fake space. Because the extra spaces in HTML are ignored. So you will see here. After the copyright. Later the code was added. But ideally we don't want this. What we want? We want these spaces that I have put. So you don't put spaces. You put ampersandltnbsp. You will put ampersandltnbsp as many times as you want. You will see here. These spaces are coming. So you have to put literally space in your HTML code. Ampersandltnbsp is something you should go after. So here you have to put these breaking spaces. And the reserved characters in HTML. Like less than greater than. You can do all this with HTML entities. After this. What is quotation tag? Quotation tag helps you to write quotation. I will also tell you the example of quotation tag. So quotation tag works like this. And as soon as you write quotation text here. So what will happen? Search engines will know that you are actually writing quotation. And you can style it with CSS. If you want to site anything here. You can put its URL. Similarly you can use Q tag. Site is equal to URL. So you can site it. You can use it for some research article. Or there are other reasons. If you want to site wikipedia. So this is used for tags. And you can style it with CSS. So these are our quotation tags. And HTML entities. Then there are some tags of HTML that have been obsolete. Like font tag has been obsolete. Because we handle the font with CSS. We don't use font tag. There were many attributes in font. Like color, size. And you can use font tag like this. But it is not recommended to use font tag. Then center tag. It might help to center things. But I will recommend you that we will center with CSS. Flexbox grade. Which is modern CSS. So these are all tags. You should know about them. But you should also know that you don't have to use them. I hope that helps. Then code tag. The most important tag for coders. Like you are watching this website. Codewithherry.com. You are watching the code tag I have used here. And if you are very interested in this. I will tell you that I am using a library called prismcss. Many people ask me. And how to do all this. I will tell you this. Prism.js. Prism.js. Prism.js. What happens is that your code is highlighting. You can put your code in your blog. So I am using this library. I will tell you how to do all this. I am using React too. So everything is coming forward. Don't worry. But if you want to write code like this. You have to use code tag. If you write it in the source code. You will see that any code is written in the pre tag. In the code tag. I have put pre tag. Then I have put code tag. You can see below. So any kind of code. If you find it on my site. It will be in the code tag. So you can copy it. You can paste it. You can write the multi line code. You can write it in pre tag. Why do you put pre tag? So that the new lines are intact. For example. I want to write a code here. And here I want to write a Python code. Okay. Here I want to write HTML code. I will do control n. And here I will do HTML. And I will enter the exclamation mark. And here I will copy and paste. And I will write in h1. That this is. I will write in h1. This is HTML boilerplate code. Okay. So if I preview this. So here this is HTML boilerplate code. Actually it was rendered. If I want to write code as it is. So what I will have to do is. I will have to replace this less than sign. I will do right click change all occurrences. And what I will do here. m%lt semicolon. I had told you that lt semicolon. And along with that the greater than symbol. Right click change all occurrences. m% m% gt semicolon. Now I will paste this code there. I can't do as it is paste. This is also very important. Now you will see here. So here see code as it is. So if you want to copy anything. Note one thing. Because of pre-tact. These spaces are also coming. If you want to remove these spaces. Then you select them. Press shift or tap. So shift tap means that the indent is reduced. Okay. So you can do this. And after that. Press backspace here. And here too I will press extra space. And you see your code as you want. It is here. And you can do it with CSS style. We will use prism CSS. I will tell you how to use such libraries. There will be a lot of things in the coming videos. I wanted to tell you about some HTML tags. About which you should know. Then after this character sets. Character sets. Means which characters are you using in your page. Then canvas. What is canvas? Basically the use of canvas is mainly done through JavaScript. But you can understand canvas. That there is an element in HTML. That is how we make graphical shapes. Okay. I hope you have understood the whole content of HTML. You must have understood it. In the coming videos. We will do CSS. HTML is completed. I hope you are enjoying it. The source code is being uploaded here. So do access it. Along with that. This playlist is not being accessed. So click here and bookmark. Or click and save. That's all for now. Thank you so much for watching this video. And I will see you next time. Bye."
+}
