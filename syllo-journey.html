@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Syllo — 学びの記録 (a record of learning)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper: #FFF9FA;
+  --paper-warm: #FDF1F4;
+  --blush: #F8DEE6;
+  --blush-deep: #F2C6D3;
+  --ink: #2B2220;
+  --ink-soft: #786461;
+  --ink-faint: #A6938F;
+  --sakura: #E38FA6;
+  --sakura-deep: #C05C79;
+  --gold: #B08A3E;
+  --gold-soft: rgba(176,138,62,.16);
+  --gold-line: rgba(176,138,62,.55);
+  --font-display: 'Shippori Mincho', serif;
+  --font-body: 'Zen Kaku Gothic New', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{
+  margin:0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x:hidden;
+}
+@media (prefers-reduced-motion: reduce){
+  *{ animation-duration:.001ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important; }
+}
+::selection{ background: var(--blush-deep); color: var(--ink); }
+
+/* ============ ambient sakura petals ============ */
+.petals{ position:fixed; inset:0; pointer-events:none; z-index:1; overflow:hidden; }
+.petal{
+  position:absolute; top:-5%;
+  width:14px; height:14px;
+  background: radial-gradient(circle at 30% 30%, var(--blush-deep), var(--sakura) 70%);
+  border-radius: 0 60% 0 60%;
+  opacity:.55;
+  animation: fall linear infinite;
+}
+@keyframes fall{
+  0%{ transform: translate(0,0) rotate(0deg); }
+  100%{ transform: translate(var(--drift,40px), 108vh) rotate(300deg); }
+}
+
+/* ============ kintsugi seam (signature element) ============ */
+.seam-wrap{
+  position:absolute; top:0; left:50%; width:2px; height:100%;
+  transform: translateX(-50%);
+  z-index:0;
+}
+#seamPath{ overflow:visible; }
+#seamLine{
+  fill:none; stroke: var(--gold); stroke-width:2;
+  stroke-linecap:round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  vector-effect: non-scaling-stroke;
+}
+
+/* ============ layout shell ============ */
+.wrap{ position:relative; max-width: 760px; margin:0 auto; padding: 0 28px; z-index:2; }
+section{ position:relative; padding: 120px 0; }
+
+/* ============ hero ============ */
+.hero{
+  min-height: 92vh;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center;
+  padding-top: 60px;
+}
+.hero-kanji{
+  font-family: var(--font-display);
+  font-size: 84px;
+  color: var(--blush-deep);
+  line-height:1;
+  margin-bottom: 6px;
+  user-select:none;
+}
+.hero h1{
+  font-family: var(--font-display);
+  font-weight:700;
+  font-size: clamp(48px, 9vw, 84px);
+  letter-spacing: 1px;
+  margin: 0 0 18px;
+  color: var(--ink);
+}
+.hero-sub{
+  font-size: 16px;
+  color: var(--ink-soft);
+  max-width: 420px;
+  line-height:1.75;
+  margin: 0 0 34px;
+}
+.hero-tag{
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform:uppercase;
+  color: var(--sakura-deep);
+  background: var(--gold-soft);
+  border: 1px solid var(--gold-line);
+  padding: 7px 16px;
+  border-radius: 999px;
+}
+.scroll-cue{
+  margin-top: 56px;
+  display:flex; flex-direction:column; align-items:center; gap:8px;
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 2px;
+  text-transform:uppercase;
+  animation: bob 2.4s ease-in-out infinite;
+}
+@keyframes bob{ 0%,100%{ transform: translateY(0); } 50%{ transform: translateY(6px); } }
+
+/* ============ section chrome ============ */
+.eyebrow{
+  display:flex; align-items:center; gap:14px;
+  margin-bottom: 20px;
+}
+.eyebrow-mark{
+  width:38px; height:38px; flex-shrink:0;
+  border-radius:50%;
+  background: var(--paper);
+  border: 2px solid var(--gold);
+  display:flex; align-items:center; justify-content:center;
+  font-family: var(--font-display); font-size:16px; color: var(--gold);
+  box-shadow: 0 0 0 5px var(--paper);
+}
+.eyebrow-text{ display:flex; flex-direction:column; }
+.eyebrow-jp{ font-family: var(--font-display); font-size: 13px; color: var(--sakura-deep); }
+.eyebrow-en{ font-family: var(--font-mono); font-size: 10.5px; letter-spacing:1.5px; text-transform:uppercase; color: var(--ink-faint); }
+
+.section-title{
+  font-family: var(--font-display); font-weight:700;
+  font-size: clamp(26px, 4vw, 34px);
+  margin: 0 0 22px;
+  color: var(--ink);
+}
+
+/* reveal on scroll */
+.reveal{ opacity:0; transform: translateY(22px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.in{ opacity:1; transform:none; }
+
+/* ============ tabs (why section) ============ */
+.tabs{ display:flex; gap:6px; margin-bottom: 22px; flex-wrap:wrap; }
+.tab-btn{
+  font-family: var(--font-body); font-size: 13px; font-weight:500;
+  background: var(--paper); color: var(--ink-soft);
+  border: 1px solid var(--blush-deep);
+  padding: 9px 16px; border-radius: 999px;
+  cursor:pointer;
+  transition: background .2s ease, color .2s ease, border-color .2s ease;
+}
+.tab-btn:hover{ border-color: var(--sakura-deep); }
+.tab-btn.active{ background: var(--sakura-deep); border-color: var(--sakura-deep); color: #fff; }
+
+.tab-panel{ display:none; }
+.tab-panel.active{ display:block; animation: fadeIn .35s ease; }
+@keyframes fadeIn{ from{ opacity:0; transform: translateY(6px);} to{ opacity:1; transform:none; } }
+
+.prose{ font-size: 15.5px; line-height:1.9; color: var(--ink-soft); }
+.prose strong{ color: var(--ink); font-weight:700; }
+
+.card{
+  background: var(--paper-warm);
+  border: 1px solid var(--blush-deep);
+  border-radius: 4px 18px 4px 18px;
+  padding: 26px 28px;
+}
+
+/* ============ pipeline trio (now section) ============ */
+.trio{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 8px; }
+.trio-card{
+  background: var(--paper-warm);
+  border: 1px solid var(--blush-deep);
+  border-radius: 4px 16px 4px 16px;
+  padding: 22px 18px;
+  text-align:center;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.trio-card:hover{ transform: translateY(-3px); box-shadow: 0 10px 26px rgba(192,92,121,.14); }
+.trio-kanji{ font-family: var(--font-display); font-size: 30px; color: var(--sakura-deep); margin-bottom: 8px; }
+.trio-en{ font-family: var(--font-mono); font-size: 10.5px; letter-spacing:1px; text-transform:uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+.trio-desc{ font-size: 12.5px; color: var(--ink-soft); line-height:1.6; }
+
+/* ============ roadmap stepping stones ============ */
+.stones{ display:flex; flex-direction:column; gap: 12px; margin-top: 8px; }
+.stone{
+  background: var(--paper-warm);
+  border: 1px solid var(--blush-deep);
+  border-radius: 14px;
+  padding: 18px 20px;
+  cursor:pointer;
+  transition: border-color .2s ease, background .2s ease;
+}
+.stone:hover{ border-color: var(--sakura-deep); }
+.stone-head{ display:flex; align-items:center; gap:14px; }
+.stone-num{ font-family: var(--font-mono); font-size:11px; color: var(--gold); width:20px; flex-shrink:0; }
+.stone-title{ font-weight:700; font-size: 14.5px; flex:1; }
+.stone-chevron{ color: var(--ink-faint); transition: transform .25s ease; font-size:12px; }
+.stone.open .stone-chevron{ transform: rotate(180deg); }
+.stone-body{
+  max-height:0; overflow:hidden;
+  transition: max-height .35s ease, opacity .3s ease, margin-top .3s ease;
+  opacity:0;
+  font-size: 13.5px; color: var(--ink-soft); line-height:1.75;
+}
+.stone.open .stone-body{ max-height: 220px; opacity:1; margin-top: 12px; }
+
+/* ============ closing ============ */
+.closing{ text-align:center; }
+.closing-mark{ font-family: var(--font-display); font-size: 40px; color: var(--blush-deep); margin-bottom: 14px; }
+.closing .prose{ max-width: 520px; margin: 0 auto 26px; }
+.signature{
+  font-family: var(--font-display); font-style:italic; font-size: 20px; color: var(--sakura-deep);
+}
+.version-tag{
+  margin-top: 30px;
+  display:inline-flex; gap:10px; align-items:center;
+  font-family: var(--font-mono); font-size: 11px; color: var(--ink-faint);
+  letter-spacing: 1px;
+}
+.version-tag .sep{ color: var(--blush-deep); }
+
+footer{
+  text-align:center; padding: 50px 0 90px;
+  font-family: var(--font-mono); font-size: 10.5px; letter-spacing:1.5px; text-transform:uppercase;
+  color: var(--ink-faint);
+  position:relative; z-index:2;
+}
+
+@media (max-width: 640px){
+  section{ padding: 90px 0; }
+  .trio{ grid-template-columns: 1fr; }
+  .hero-kanji{ font-size: 60px; }
+}
+</style>
+</head>
+<body>
+
+<div class="petals" id="petals"></div>
+<div class="seam-wrap"><svg id="seamPath" width="2" height="100%" preserveAspectRatio="none"><line id="seamLine" x1="1" y1="0" x2="1" y2="3000"/></svg></div>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-kanji">道</div>
+    <h1>Syllo</h1>
+    <p class="hero-sub">An AI teaching assistant that points you to the exact minute something was taught — and the story of why I built it, what it cost me to learn, and where it's going next.</p>
+    <span class="hero-tag">v1.0 · an ongoing study</span>
+    <div class="scroll-cue">
+      <span>scroll</span>
+      <span>↓</span>
+    </div>
+  </section>
+
+  <!-- ============ 01 WHY ============ -->
+  <section id="why">
+    <div class="eyebrow reveal">
+      <div class="eyebrow-mark">01</div>
+      <div class="eyebrow-text">
+        <span class="eyebrow-jp">なぜ</span>
+        <span class="eyebrow-en">Why</span>
+      </div>
+    </div>
+    <h2 class="section-title reveal">Why I built this</h2>
+
+    <div class="tabs reveal">
+      <button class="tab-btn active" data-tab="problem">The problem</button>
+      <button class="tab-btn" data-tab="build">Why I built it</button>
+      <button class="tab-btn" data-tab="lesson">What it taught me</button>
+    </div>
+
+    <div class="reveal">
+      <div class="tab-panel active" id="tab-problem">
+        <div class="card prose">
+          Every long course has the same problem: you remember that <strong>something</strong> was explained well, somewhere, but not where. So you scrub back and forth through hours of video looking for four minutes you half-remember. I wanted an assistant that had actually watched the whole course — one I could just ask, and it would tell me exactly which video and which timestamp to go to, instead of making me search again.
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-build">
+        <div class="card prose">
+          I could have used an off-the-shelf tool. I didn't, because the point was never just to get an answer — it was to actually build the thing that gets the answer. Transcription, chunking, embeddings, retrieval, grounded prompting: I wanted to understand each of those pieces by wiring them together myself, not by reading about them.
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-lesson">
+        <div class="card prose">
+          The model was never the hard part. <strong>Chunking strategy</strong> and <strong>retrieval quality</strong> decide almost everything about whether an answer is useful — and most of the real work turned out to be unglamorous plumbing: cleaning transcripts, merging fragments into coherent chunks, keeping timestamps aligned through every stage. That's not what I expected going in.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 WHERE IT STANDS ============ -->
+  <section id="now">
+    <div class="eyebrow reveal">
+      <div class="eyebrow-mark">02</div>
+      <div class="eyebrow-text">
+        <span class="eyebrow-jp">いま</span>
+        <span class="eyebrow-en">Where it stands</span>
+      </div>
+    </div>
+    <h2 class="section-title reveal">v1.0, end to end</h2>
+    <p class="prose reveal">The whole pipeline runs today, start to finish. No frontend yet, and that's deliberate — I'd rather get the thinking right before I dress it up.</p>
+
+    <div class="trio reveal">
+      <div class="trio-card">
+        <div class="trio-kanji">聴</div>
+        <div class="trio-en">Listen</div>
+        <div class="trio-desc">Every video is transcribed and translated into timestamped text, no matter what language it was taught in.</div>
+      </div>
+      <div class="trio-card">
+        <div class="trio-kanji">憶</div>
+        <div class="trio-en">Remember</div>
+        <div class="trio-desc">Cleaned, merged chunks are embedded into vectors — meaning gets stored, not just words.</div>
+      </div>
+      <div class="trio-card">
+        <div class="trio-kanji">答</div>
+        <div class="trio-en">Answer</div>
+        <div class="trio-desc">A question is matched by meaning, and answered only from what's actually taught — with a timestamp attached.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 WHAT'S NEXT ============ -->
+  <section id="next">
+    <div class="eyebrow reveal">
+      <div class="eyebrow-mark">03</div>
+      <div class="eyebrow-text">
+        <span class="eyebrow-jp">これから</span>
+        <span class="eyebrow-en">What's next</span>
+      </div>
+    </div>
+    <h2 class="section-title reveal">The path ahead</h2>
+    <p class="prose reveal">Five things I'm working toward, in roughly the order I plan to tackle them. Tap one open.</p>
+
+    <div class="stones reveal" id="stones">
+      <div class="stone">
+        <div class="stone-head">
+          <span class="stone-num">01</span>
+          <span class="stone-title">Sharpen retrieval</span>
+          <span class="stone-chevron">▾</span>
+        </div>
+        <div class="stone-body">Better chunking than fixed groups of five, re-ranking retrieved chunks instead of trusting raw cosine similarity, and an actual evaluation set — so "is this a good answer" stops being a guess.</div>
+      </div>
+      <div class="stone">
+        <div class="stone-head">
+          <span class="stone-num">02</span>
+          <span class="stone-title">Bring in a real ML framework</span>
+          <span class="stone-chevron">▾</span>
+        </div>
+        <div class="stone-body">Right now embeddings and generation come from local servers I call by convention. I want that layer built on something like PyTorch or Hugging Face, so the model underneath is swappable without touching retrieval code.</div>
+      </div>
+      <div class="stone">
+        <div class="stone-head">
+          <span class="stone-num">03</span>
+          <span class="stone-title">Train on different data</span>
+          <span class="stone-chevron">▾</span>
+        </div>
+        <div class="stone-body">This currently assumes one course, one structure, one language. Generalizing it means any set of lecture videos should index cleanly, side by side, without rewriting the pipeline each time.</div>
+      </div>
+      <div class="stone">
+        <div class="stone-head">
+          <span class="stone-num">04</span>
+          <span class="stone-title">Fine-tune</span>
+          <span class="stone-chevron">▾</span>
+        </div>
+        <div class="stone-body">Teach a small model to answer the way a good teaching assistant actually does: grounded in the source, always citing a timestamp, and honest when a question falls outside what's been taught.</div>
+      </div>
+      <div class="stone">
+        <div class="stone-head">
+          <span class="stone-num">05</span>
+          <span class="stone-title">Build the frontend</span>
+          <span class="stone-chevron">▾</span>
+        </div>
+        <div class="stone-body">Deliberately last. A polished interface on top of a weak brain is worse than no interface at all — this comes once the answers underneath are actually worth showing off.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 CLOSING ============ -->
+  <section id="closing" class="closing">
+    <div class="eyebrow reveal" style="justify-content:center;">
+      <div class="eyebrow-mark">04</div>
+      <div class="eyebrow-text" style="text-align:left;">
+        <span class="eyebrow-jp">学び続ける</span>
+        <span class="eyebrow-en">Still learning</span>
+      </div>
+    </div>
+    <div class="closing-mark reveal">桜</div>
+    <p class="prose reveal">This is version 1.0 — the first time every piece worked together, not the finished thing. I'm treating it as a running log of what I'm learning, not a product I'm done with. The plan is to keep building it in public increments: a little more accurate, a little more general, a little more honest about what it doesn't know — and to keep learning everything that takes, one version at a time.</p>
+    <p class="signature reveal">— still building, still learning</p>
+    <div class="version-tag reveal">
+      <span>SYLLO</span><span class="sep">·</span><span>v1.0</span><span class="sep">·</span><span>2026</span>
+    </div>
+  </section>
+
+</div>
+
+<footer>an ongoing study · syllo</footer>
+
+<script>
+/* ---- ambient sakura petals ---- */
+const petalField = document.getElementById('petals');
+const N = window.innerWidth < 640 ? 10 : 18;
+for(let i=0;i<N;i++){
+  const p = document.createElement('div');
+  p.className = 'petal';
+  const left = Math.random()*100;
+  const dur = 12 + Math.random()*10;
+  const delay = Math.random()*-20;
+  const drift = (Math.random()*80 - 40) + 'px';
+  const scale = 0.5 + Math.random()*0.8;
+  p.style.left = left + 'vw';
+  p.style.animationDuration = dur + 's';
+  p.style.animationDelay = delay + 's';
+  p.style.setProperty('--drift', drift);
+  p.style.transform = `scale(${scale})`;
+  petalField.appendChild(p);
+}
+
+/* ---- kintsugi seam draws in with scroll progress ---- */
+const seamLine = document.getElementById('seamLine');
+const seamPath = document.getElementById('seamPath');
+function sizeSeam(){
+  const h = document.body.scrollHeight;
+  seamPath.setAttribute('height', h);
+  seamLine.setAttribute('y2', h);
+  seamLine.style.strokeDasharray = h;
+  updateSeam();
+}
+function updateSeam(){
+  const h = document.body.scrollHeight - window.innerHeight;
+  const scrolled = window.scrollY;
+  const pct = Math.min(1, Math.max(0, scrolled / h));
+  const total = parseFloat(seamLine.style.strokeDasharray || document.body.scrollHeight);
+  seamLine.style.strokeDashoffset = total * (1 - pct);
+}
+window.addEventListener('resize', sizeSeam);
+window.addEventListener('scroll', ()=> requestAnimationFrame(updateSeam));
+sizeSeam();
+
+/* ---- reveal on scroll ---- */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('in'); }
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el=> io.observe(el));
+
+/* ---- tabs ---- */
+document.querySelectorAll('.tab-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ---- stepping stones accordion ---- */
+document.querySelectorAll('.stone').forEach(stone=>{
+  stone.addEventListener('click', ()=>{
+    const wasOpen = stone.classList.contains('open');
+    document.querySelectorAll('.stone').forEach(s=>s.classList.remove('open'));
+    if(!wasOpen) stone.classList.add('open');
+    setTimeout(sizeSeam, 380);
+  });
+});
+</script>
+</body>
+</html>
