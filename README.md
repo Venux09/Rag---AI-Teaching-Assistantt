@@ -97,3 +97,7 @@ v1.0 proves the pipeline works. The plan from here:
 
 Actively evolving. Frontend is intentionally deferred — the priority right now is getting the retrieval and answer quality right before building a UI on top of it. This README will be updated as the ML framework, fine-tuning, and multi-dataset support land.
 
+
+## syllo-journey:
+File named as syllo is an interactive expalnation of this project and future plans and why i buided This
+Open file in the integeratted grammer 
